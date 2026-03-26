@@ -1,0 +1,242 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <title>Tour Packages</title>
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #eff1ee; /* Light background */
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: #1b1c27;
+            padding: 15px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80px; /* Adjust the size as needed */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-container span {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            color: white;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #9ec1d7;
+            border-radius: 4px;
+        }
+
+        /* Package Section Styles */
+        .package-container {
+            background-color: #fff;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .package-container h2 {
+            text-align: center;
+            font-size: 36px;
+            color: #18465a;
+            margin-bottom: 40px;
+        }
+
+        .package-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .package-item {
+            background-color: #f9f9f9;
+            width: 30%;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .package-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .package-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #65403a;
+        }
+
+        .package-item p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Image styles */
+        .package-item img {
+            width: 300px;
+            height: 200px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        /* Button Styles */
+        .booking-button {
+            display: block;
+            background-color: #ff6b6b;
+            color: white;
+            border: none;
+            padding: 10px;
+            text-align: center;
+            width: 200px;
+            margin: 20px auto 0;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .booking-button:hover {
+            background-color: #ff4a4a;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1b1c27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .package-list {
+                flex-direction: column;
+            }
+
+            .package-item {
+                width: 100%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'media/Terengganu.png' %}" alt="">
+            <span>Ganu Vibes</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'packages' %}">Packages</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'search' %}">Search</a></li>
+        </ul>
+    </nav>
+    
+    {% load static %}
+    <!-- Package Section -->
+    <section class="package-container">
+        <h2>Available Events Packages</h2>
+        <div class="package-list">
+            {% if packages %}
+                {% for package in packages %}
+                <div class="package-item">
+                    {% if package.packagename == "Tropical Island Escape" %}
+                        <img src="{% static 'media/bidong-island-004.jpg' %}" alt="{{ package.packagename }}">
+                    {% elif package.packagename == "Cultural Heritage Experience" %}
+                        <img src="{% static 'media/1.jpg' %}" alt="{{ package.packagename }}">
+                    {% elif package.packagename == "Adventure and Wildlife" %}
+                        <img src="{% static 'media/tasik-kenyir.jpg' %}" alt="{{ package.packagename }}">
+                    {% elif package.packagename == "Family Fun in Terengganu" %}
+                        <img src="{% static 'media/IMG-20231218-WA0010.jpg' %}" alt="{{ package.packagename }}">
+                    {% elif package.packagename == "Island Hopping Adventure" %}
+                        <img src="{% static 'media/perhentian.jpg' %}" alt="{{ package.packagename }}">
+                    {% elif package.packagename == "Historical Tour of Terengganu" %}
+                        <img src="{% static 'media/musium.jpeg' %}" alt="{{ package.packagename }}">
+                    {% endif %}
+
+                    <h3>{{ package.packagename }}</h3>
+                    <p><strong>Destinations:</strong> {{ package.destinations }}</p>
+                    <p><strong>Description:</strong> {{ package.tourdescription }}</p>
+                    <p><strong>Price:</strong> ${{ package.packageprice }}</p>
+                    <p><strong>Duration:</strong> {{ package.durationdays }} days</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>No packages available.</p>
+            {% endif %}
+        </div>
+        <a href="{% url 'register' %}"><button class="booking-button">SIGN UP TO BOOK </button></a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Terengganu Tourism. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
