@@ -1,0 +1,263 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terengganu Tourism</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        h1, h2, h3 {
+            font-weight: bold;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: #1b1c27;
+            padding: 15px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo Styles */
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80px; /* Adjust the size as needed */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-container span {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+            margin-right: 20px;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #9ec1d7;
+            border-radius: 4px;
+        }
+
+        /* Home Section */
+        #home {       
+            background:linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("{% static 'media/kayak.jpg' %}") no-repeat center center/cover;
+            height: 100vh;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            margin-top: 70px; /* Offset for fixed navbar */
+        }
+
+        #home h1 {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        #home p {
+            font-size: 20px;
+            margin-top: 20px;
+            max-width: 600px;
+        }
+
+        /* Why Visit Section */
+        #why-visit {
+            background-color: #eff1ee;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #why-visit h2 {
+            color: #18465a;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #why-visit p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        /* History Section */
+        #history {
+            background-color: #f4f4f4;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        #history h2 {
+            color: #18465a;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        #history p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        #history .cta {
+            margin-top: 30px;
+        }
+
+        #history .cta button {
+            background-color: #18465a;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        #history .cta button:hover {
+            background-color: #65403a;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1b1c27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #home h1 {
+                font-size: 36px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'media/Terengganu.png' %}" alt="Ganu Vibes Logo">
+            <span>Ganu Vibes</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'packages' %}">Packages</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'search' %}">Search</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Home Section -->
+    <section id="home">
+        <h1>Welcome to Terengganu</h1>
+        <p>Explore Beautiful Destinations, Rich Culture, and Amazing Packages!</p>
+    </section>
+
+    <!-- Why Visit Section -->
+    <section id="why-visit">
+        <h2>Why Visit Terengganu?</h2>
+        <p>
+            Terengganu is a hidden gem on Malaysia’s east coast, offering visitors a perfect blend of natural beauty and rich cultural heritage. From its pristine beaches like Redang and Perhentian Islands, known for crystal-clear waters and vibrant marine life, to the lush rainforests that invite adventurers and nature lovers, Terengganu is a paradise for those seeking tranquility and outdoor activities.
+            <br><br>
+            Beyond its stunning landscapes, Terengganu is a cultural treasure trove. Discover the age-old traditions of batik and songket weaving, explore the architectural wonders of the iconic Crystal Mosque, and experience the warmth of the local people during vibrant festivals like Hari Raya and the Monsoon Cup.
+            <br><br>
+            Whether you're looking for a peaceful island retreat, a journey into Malaysia’s heritage, or thrilling adventures, Terengganu offers something for every traveler. Come and experience the magic of Terengganu—a place where nature meets tradition.
+        </p>
+    </section>
+
+    <!-- History Section -->
+    <section id="history">
+        <h2>Discover the Rich History of Terengganu with us !</h2>
+        <p>
+            Terengganu, located on the east coast of Malaysia, is a land steeped in history and tradition.
+            Known for its pristine beaches, vibrant culture, and iconic landmarks, Terengganu has long been a
+            destination for those seeking both natural beauty and historical depth. From the ancient
+            traditions of the local fishermen to the grandeur of the Terengganu State Museum, the largest museum
+            in Southeast Asia, there’s something for every traveler to explore. The state is also known for its traditional
+            crafts, such as batik and songket weaving, offering visitors a glimpse into the rich artistic heritage.
+        </p>
+        <div class="cta">
+            <a href="{% url 'packages' %}">
+                <button>Go to our Events Packages</button>
+        </div>
+
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Terengganu Tourism. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

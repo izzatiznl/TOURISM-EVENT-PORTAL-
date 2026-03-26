@@ -1,0 +1,202 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-image: url("{% static 'media/wallpaperflare.com_wallpaper (1).jpg' %}"); /* Add your image path */
+            background-color: #eff1ee; /* Fallback color */
+            background-size: cover; /* Scale the image to cover the entire body */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Prevent the image from repeating */
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Navbar styles */
+        nav {
+            background-color: #1b1c27;
+            padding: 15px 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80px; /* Adjust the size as needed */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-container span {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            color: white;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            background-color: #9ec1d7;
+            border-radius: 4px;
+        }
+
+        /* Registration Form Styles */
+        .registration-container {
+            background-color: white;
+            padding: 40px;
+            border-radius: 8px; /* Adjusted for consistency */
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            margin: 50px auto;
+        }
+
+        .registration-container h2 {
+            text-align: center;
+            font-size: 28px;
+            color: #18465a;
+            margin-bottom: 20px;
+        }
+
+        .registration-container label {
+            display: block;
+            margin-bottom: 8px;
+            color: #65403a;
+            font-weight: bold;
+        }
+
+        .registration-container input[type="text"],
+        .registration-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .registration-container input[type="text"]:focus,
+        .registration-container input[type="password"]:focus {
+            border-color: #9ec1d7; /* Highlight border on focus */
+            outline: none; /* Remove default outline */
+        }
+
+        .registration-container input[type="submit"] {
+            display: block; /* Center align the button */
+            background-color: #18465a; /* Change to match login button color */
+            color: white;
+            border: none;
+            padding: 12px; /* Adjusted for consistency */
+            text-align: center;
+            width: 100%; /* Full width */
+            margin-top: 20px; /* Space above the button */
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .registration-container input[type="submit"]:hover {
+            background-color: #ff4a4a; /* Darker shade on hover */
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1b1c27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        footer p {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'media/Terengganu.png' %}" alt="Logo">
+            <span>Ganu Vibes</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'packages' %}">Packages</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+        </ul>
+    </nav>
+
+    <!-- Registration Form -->
+    <div class="registration-container">
+        <h2>Register</h2>
+        <form action="{% url 'register' %}" method="post">
+            {% csrf_token %}
+            <label for="custname">Customer Name:</label>
+            <input type="text" name="custname" id="custname" required>
+
+            <label for="custphone">Customer Phone:</label>
+            <input type="text" name="custphone" id="custphone" required>
+
+            <label for="custmail">Customer Email:</label>
+            <input type="text" name="custmail" id="custmail" required>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password" required>
+
+            <input type="submit" value="REGISTER NOW">
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Terengganu Tourism. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

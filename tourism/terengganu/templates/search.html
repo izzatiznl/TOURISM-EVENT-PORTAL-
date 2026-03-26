@@ -1,0 +1,267 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tourism Website</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: aliceblue;
+            color: #333;
+            line-height: 1.6;
+
+            
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+
+        h1, h2 {
+            font-weight: bold;
+        }
+
+        h3{
+            font-weight: bold;
+            text-align: left;
+        }
+
+        .p1{
+            text-align: left;
+        }
+
+        /* Navbar styles */
+        nav {
+        background-color: #1b1c27;
+        padding: 15px 20px;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        position:relative;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-container img {
+            width: 80px; /* Adjust the size as needed */
+            height: auto;
+            object-fit: contain;
+        }
+
+        .logo-container span {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-left: 10px;
+        }
+
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: right;
+        }
+
+        nav ul li {
+            margin: 0 20px;
+        }
+
+        nav ul li a {
+            font-size: 18px;
+            color: white;
+            text-transform: uppercase;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: #9ec1d7;
+            border-radius: 4px;
+        }
+
+        /* Search Form */
+        form {
+            margin: 100px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        form input[type="text"] {
+            padding: 10px;
+            width: 80%;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #18465a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #65403a;
+        }
+
+        /* Package Results */
+        .package-container {
+            background-color: #fff;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 50px auto;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        .package-container h2 {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+
+        .package-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .package-item {
+            background-color: #f9f9f9;
+            width: 100%;
+            margin-bottom: 30px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .package-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .package-item h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .package-item p {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: #1b1c27;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            bottom: 0;
+            width: 100%;
+            z-index: 1000; 
+            
+        }
+
+        footer p {
+            margin: 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .package-list {
+                flex-direction: column;
+            }
+
+            .package-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav>
+        <div class="logo-container">
+            <img src="{% static 'media/Terengganu.png' %}" alt="">
+            <span>Ganu Vibes</span>
+        </div>
+        <ul>
+            <li><a href="{% url 'homepage' %}">Home</a></li>
+            <li><a href="{% url 'packages' %}">Packages</a></li>
+            <li><a href="{% url 'login' %}">Login</a></li>
+            <li><a href="{% url 'register' %}">Register</a></li>
+            <li><a href="{% url 'search' %}">Search</a></li>
+        </ul>
+    </nav>
+
+    <!-- Search Form -->
+    <form action="{% url 'search' %}" method="get"> <br><br>
+        Search packages : <br>
+        <br><input type="text" name="c_packagename" placeholder="Search for a package..."> <br><br>
+        <input type="submit" value="SEARCH"> <br> <br>
+        <h3>Available Packages:</h3>
+        <p class="p1">• Tropical Island Escape</p> 
+        <p class="p1">• Cultural Heritage Experience</p> 
+        <p class="p1">• Adventure and Wildlife</p> 
+        <p class="p1">• Family Fun in Terengganu</p> 
+        <p class="p1">• Island Hopping Adventure</p> 
+        <p class="p1">• Historical Tour of Terengganu</p> <br>
+    </form>
+
+    <!-- Display Search Results -->
+    <div class="package-container">
+        <h2>Search Results</h2>
+        <div class="package-list">
+            {% for value in data %}
+            <div class="package-item">
+                <h3>Package name: {{value.packagename}}</h3>
+                <p>Destinations: {{value.destinations}}</p>
+                <p>Tour Description: {{value.tourdescription}}</p>
+                <p>Package price: {{value.packageprice}}</p>
+                <p>Duration Days: {{value.durationdays}}</p>
+                <p>Start Date: {{value.startdate}}</p>
+                <p>End Date: {{value.enddate}}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Terengganu Tourism. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
