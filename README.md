@@ -35,4 +35,4 @@
 - **Backend:** Django (Python)
 - **Database:** SQLite
 
-- 
+
